@@ -3,8 +3,7 @@ import { TopicsService } from '../services/topics.service';
 import { ActivatedRoute } from '@angular/router';
 import { Http, Response, Headers, JsonpModule } from "@angular/http";
 import { Observable } from 'rxjs/Observable';
-
-
+import { trigger, state, animate, style, transition, keyframes, group } from '@angular/core';
 
 
 
@@ -14,7 +13,50 @@ import { DavidDataService } from '../services/david-data.service';
 @Component({
   selector: 'app-topics',
   templateUrl: './topics.component.html',
-  styleUrls: ['./topics.component.scss']
+  styleUrls: ['./topics.component.scss'],
+  animations: [
+    trigger('list2', [
+      state('in', style({
+        opacity: 1,
+        transform: 'translateX(0)'
+      })),
+      transition('void => *', [
+        animate(1000, keyframes([
+          style({
+            transform: 'translateX(-100px)',
+            opacity: 0,
+            offset: 0
+          }),
+          style({
+            transform: 'translateX(-50px)',
+            opacity: 0.5,
+            offset: 0.3
+          }),
+          style({
+            transform: 'translateX(-20px)',
+            opacity: 1,
+            offset: 0.8
+          }),
+          style({
+            transform: 'translateX(0px)',
+            opacity: 1,
+            offset: 1
+          })
+        ]))
+      ]),
+      transition('* => void', [
+        group([
+          animate(300, style({
+            color: 'red'
+          })),
+          animate(800, style({
+            transform: 'translateX(100px)',
+            opacity: 0
+          }))
+        ])
+      ])
+    ]),
+  ]
 })
 export class TopicsComponent implements OnInit {
   newTopic: any = {user: sessionStorage.getItem('username')};

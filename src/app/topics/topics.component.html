@@ -1,10 +1,11 @@
 <div class="container" class="keepInside" id="kk">
 <h1 class="keepInside" id="n" >Circle: <p><strong>[{{currentCircle}}]</strong></p></h1>
-
-<ul>
-      Topics:
+<h2>      Topics:
+</h2>
+<hr>
+<ul class="list-group">
       <!--(click)="clicked(topic)"-->
-      <li *ngFor="let topic of topics; let i = index" [routerLink]="['/messages']" >
+      <li class="list-group-item" [@list2] *ngFor="let topic of topics; let i = index" [routerLink]="['/messages']" >
         <strong (click)="topicClicked(topic[0], topic[1])">{{topic[0]}}</strong> 
         <!--<strong>{{topic.user}}</strong>-->
       </li>
@@ -13,12 +14,12 @@
 <input type="text" placeholder="New Topic To Discuss" 
     [(ngModel)]="newTopic.body" 
     name="body"
-    (keyup.enter)="createTopic(newTopic.body)"
+    (keyup.enter)="createTopic(newTopic.body)" 
     >
 
 <div>
-<ul>
-    <li *ngFor="let user of users">
+<ul class="list-group">
+    <li class="list-group-item" [@list2] *ngFor="let user of users">
       {{user}}
     </li>
 </ul>
