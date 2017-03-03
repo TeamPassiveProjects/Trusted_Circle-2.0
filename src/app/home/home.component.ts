@@ -69,11 +69,16 @@ export class HomeComponent implements OnInit {
                                   data.forEach((val)=>{
                                     console.log('this is val:', val)
                                     if(val["username"] === localStorage.getItem('username') ) {
-                                      localStorage.setItem('userID', val["id"])
-                                      localStorage.setItem('photo', val["photo"])
-                                      localStorage.setItem('desc', val["desc"])
-                                      localStorage.setItem('email', val["email"])
+                                      localStorage.setItem('userID', val.id)
+                                      localStorage.setItem('photo', val.photo)
+                                      localStorage.setItem('desc', val.desc)
+                                      localStorage.setItem('email', val.email)
                                       this.DavidDataService.getAllCurrentUserData( localStorage.getItem('userID') );
+
+                                      sessionStorage.setItem('userId', res.json().id)
+        // console.log('user id ', sessionStorage.getItem('userId'))
+        this.authService.isLoggedIn = true;
+        this.router.navigate(['/circles']);
 
                                     }
 
@@ -91,10 +96,6 @@ export class HomeComponent implements OnInit {
         // console.log('res from login is: ', res);
         // console.log('session username is:', localStorage.getItem('username'))
         // console.log('res.status from login is: ', res.status);
-        sessionStorage.setItem('userId', res.json().id)
-        // console.log('user id ', sessionStorage.getItem('userId'))
-        this.authService.isLoggedIn = true;
-        this.router.navigate(['/circles']);
       }, err => {
         // console.log('err', err)
         err = 'Bad Login'
