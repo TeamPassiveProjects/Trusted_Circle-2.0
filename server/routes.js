@@ -209,7 +209,7 @@ router.get('/userCircleTopic/:userId'
         }).then((uCircleData) => {
           // console.log(uCircleData, 'this is user circle data');
           returnInfo.user_circles_Obj = uCircleData;
-          for (obj of uCircleData) {
+          for (var obj of uCircleData) {
             // console.log(obj.dataValues, '------------------0----------------');
             returnInfo.circleId.push(obj.dataValues.circleId);
           }
@@ -225,7 +225,7 @@ router.get('/userCircleTopic/:userId'
             }
           }).then((circleData) => {
             // console.log(circleData, '---------1---------')
-            for (cir of circleData) {
+            for (var cir of circleData) {
               // console.log(cir.dataValues,'------2------');
               returnInfo.circlesObj.push(cir.dataValues);
             }
@@ -237,9 +237,9 @@ router.get('/userCircleTopic/:userId'
             //FINDING CIRCLES AND TOPICS
             Topic.findAll({})
               .then((topicInfo) => {
-                for (topic of topicInfo) {
+                for (var topic of topicInfo) {
                   // console.log(topic.dataValues,'------2------');
-                  for (cirId of returnInfo.circleId) {
+                  for (var cirId of returnInfo.circleId) {
                     if (cirId === topic.dataValues.circleId) {
                       returnInfo.topicId.push(topic.dataValues.id);
                       returnInfo.topicsObj.push(topic.dataValues);
@@ -251,8 +251,8 @@ router.get('/userCircleTopic/:userId'
 
                 return returnInfo
               }).then(() => {
-                for (circlesData of returnInfo.circlesObj) {
-                  for (topicsData of returnInfo.topicsObj) {
+                for (var circlesData of returnInfo.circlesObj) {
+                  for (var topicsData of returnInfo.topicsObj) {
                     if (circlesData.id === topicsData.circleId) {
                       if (returnInfo.circles_topics[circlesData.id]) {
                         returnInfo.circles_topics[circlesData.id].push(topicsData)
@@ -273,7 +273,7 @@ router.get('/userCircleTopic/:userId'
                     // console.log(data, 'this is Data');
 
                     var dataArray = data;
-                    for (topics of dataArray) {
+                    for (var topics of dataArray) {
                       console.log(topics.dataValues);
                       returnInfo.users_topicsALL.push(topics.dataValues);
                     }
