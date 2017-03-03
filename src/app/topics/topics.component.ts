@@ -82,10 +82,10 @@ export class TopicsComponent implements OnInit {
   //   sessionStorage.setItem('topicBody', topic.body)
 
   //   sessionStorage.setItem('topicUser', topic.user)
-  //   // console.log(this.daveData);
-  //   console.log(idx);
+  //   // //console.log(this.daveData);
+  //   //console.log(idx);
   //   this.DavidDataService.clickedTopic = topic;
-  //   console.log(this.DavidDataService.clickedTopic);
+  //   //console.log(this.DavidDataService.clickedTopic);
   //   localStorage.setItem('clickedTopic', topic)
 
 
@@ -130,22 +130,22 @@ export class TopicsComponent implements OnInit {
                         for (var circles of theData.circlesObj) {
                           if(circles.name === localStorage.getItem('currentCircle')) {
                             var idx = circles.id;
-                            console.log(idx);
+                            //console.log(idx);
                             this.DavidDataService.currentCircle = idx;
                           }
                         }
 
-                        console.log(theData.circles_topics);
-                        console.log(this.DavidDataService.currentCircle);
-                        console.log(idx);
+                        //console.log(theData.circles_topics);
+                        //console.log(this.DavidDataService.currentCircle);
+                        //console.log(idx);
                         for(var prop in theData.circles_topics) {
-                          console.log(prop)
+                          //console.log(prop)
                           if(prop == idx) {
                             var topics = theData.circles_topics[prop]
                             for(var topic of topics) {
 
                               this.topics.push([topic.body,topic.id]);
-                              console.log(this.topics);
+                              //console.log(this.topics);
                             }
                           }
                         }
@@ -161,15 +161,15 @@ export class TopicsComponent implements OnInit {
 
 
   topicClicked(topicName, idx) {
-    console.log('THISSSS', this.user_topic)
-    console.log('this is the selected topic\'s id', idx);
+    //console.log('THISSSS', this.user_topic)
+    //console.log('this is the selected topic\'s id', idx);
     // var arr_user_topic = this.user_topic;
     // this.DavidDataService.getUser(idx) 
     // .subscribe( (data) => {
-    //   console.log(data, 'DATA!!!!')
+    //   //console.log(data, 'DATA!!!!')
     //   for(var user_topic of arr_user_topic) {
     //     if(user_topic.userId == data.id) {
-    //       console.log(data.username);
+    //       //console.log(data.username);
     //       sessionStorage.setItem('topicUser', data.username);
     //     }
     //   }
@@ -180,7 +180,7 @@ export class TopicsComponent implements OnInit {
 
 
     // })
-    console.log('this is the id of the topic selected', idx)
+    //console.log('this is the id of the topic selected', idx)
 
     sessionStorage.setItem('topicSelectedIdx', idx);
     sessionStorage.setItem('topicBody', topicName)
@@ -190,31 +190,31 @@ export class TopicsComponent implements OnInit {
 
 
   // topicClicked(topicName) {
-  //   console.log('this is the topic!', topicName)
+  //   //console.log('this is the topic!', topicName)
   //   //GET TOPICS_USERS
   //   this._TopicsService.getUsersTopics()
   //                     .subscribe( (data1) => {
-  //                       console.log("Where is this data man", data1)
+  //                       //console.log("Where is this data man", data1)
   //                               //GET TOPICS
   //                               this._TopicsService.getTopics()
   //                               .subscribe( (data) => {
-  //                                 console.log("WHAT AM I???", data)
+  //                                 //console.log("WHAT AM I???", data)
   //                                 data.forEach((val)=>{
   //                                   if(val.body === topicName){
   //                                   this.topicId = val.id; 
-  //                                   console.log(data1, 'data from the getUSERTOPICS');
-  //                                   console.log(this.topicId,'THIS IS TOPIC ID!');
+  //                                   //console.log(data1, 'data from the getUSERTOPICS');
+  //                                   //console.log(this.topicId,'THIS IS TOPIC ID!');
                                     
   //                                       //GET USERS
   //                                       this._TopicsService.getUsers()
   //                                       .subscribe( (data3) => {
-  //                                         console.log("Where is this data man of GET USERS", data3)
+  //                                         //console.log("Where is this data man of GET USERS", data3)
   //                                         for(var prop1 of data1) {
   //                                           if(prop1.status === "original poster" && this.topicId === prop1.topicId) {
   //                                             for(var prop3 of data3) {
-  //                                               console.log('proP333333', prop3)
+  //                                               //console.log('proP333333', prop3)
   //                                               if(prop3.id === prop1.userId) {
-  //                                                 console.log(prop3, prop1);
+  //                                                 //console.log(prop3, prop1);
   //                                                 sessionStorage.setItem('topicOwner', prop3.username);
   //                                                 sessionStorage.setItem('topicUser', prop3.username);
                                                   
@@ -222,7 +222,7 @@ export class TopicsComponent implements OnInit {
   //                                             }
                                             
 
-  //                                             console.log( sessionStorage.getItem('topicOwner') );
+  //                                             //console.log( sessionStorage.getItem('topicOwner') );
   //                                           } 
   //                                         }
 
@@ -254,7 +254,7 @@ export class TopicsComponent implements OnInit {
   }
 
   printuser(user) {
-    console.log(user)
+    //console.log(user)
     sessionStorage.setItem('suggestedUsername', user.username)
     sessionStorage.setItem('suggestedUserId', user.id)
   }
@@ -262,68 +262,68 @@ export class TopicsComponent implements OnInit {
   getUsers() {
     this._TopicsService.getUsers()
                       .subscribe( (data) => {
-                        console.log("Where is this data man", data)
+                        //console.log("Where is this data man", data)
                         this.userInfo = data;
                         this.filterItem('');
-                        console.log('yo wtf', this.userInfo)
-                        console.log('goddamnit', this.filteredItems)
+                        //console.log('yo wtf', this.userInfo)
+                        //console.log('goddamnit', this.filteredItems)
                       })
   }
 
   // davidGetUsers() {
-  //   console.log('davidGetUsers Lawnches')
-  //   console.log(typeof localStorage.getItem('currentCircleId'))
+  //   //console.log('davidGetUsers Lawnches')
+  //   //console.log(typeof localStorage.getItem('currentCircleId'))
   //   this.DavidDataService.davidGetUsers(localStorage.getItem('currentCircleId'))
   //   .subscribe( (data) => {
-  //     console.log(data);
+  //     //console.log(data);
   //       // this.usersOfCircle = data;
-  //     console.log('lame');
+  //     //console.log('lame');
   //   });
   // }
 
   // davidGetNotUsers() {
   //   this.DavidDataService.davidGetNotUsers(localStorage.getItem('currentCircleId'))
   //   .subscribe( (data) => {
-  //     console.log(data);
+  //     //console.log(data);
   //       // this.usersNotOfCircle = data;
-  //     console.log('lame');
+  //     //console.log('lame');
   //   });
   // }
 
   // getTopics() {
-  //   console.log('inside getTopics function inside CirclesComponent')
+  //   //console.log('inside getTopics function inside CirclesComponent')
   //   //find the current circles's Id by name
     
 
   //   this._TopicsService.getCircles()
   //                     .subscribe( (data) => {
-  //                       console.log("WHAT AM I???", data)
+  //                       //console.log("WHAT AM I???", data)
   //                       data.forEach((val)=>{
-  //                         console.log(val);
+  //                         //console.log(val);
   //                         this.allCircles.push(val)
   //                       }) 
-  //                       console.log('list of allCircles', this.allCircles)
-  //                       console.log('this is the current Circle', sessionStorage.getItem('circle') );
+  //                       //console.log('list of allCircles', this.allCircles)
+  //                       //console.log('this is the current Circle', sessionStorage.getItem('circle') );
 
   //                       for(var props in this.allCircles) {
   //                         for(var prop in this.allCircles[props]) {
   //                           if (this.allCircles[props][prop] === sessionStorage.getItem('circle')) {
   //                             var topicIdFound = this.allCircles[props]["id"];
-  //                             console.log('this is the id:', this.allCircles[props]["id"])
+  //                             //console.log('this is the id:', this.allCircles[props]["id"])
   //                           }
   //                         }
   //                       }
 
   //                               this._TopicsService.getTopics()
   //                               .subscribe( (data) => {
-  //                                 console.log("WHAT AM I???", data)
+  //                                 //console.log("WHAT AM I???", data)
   //                                 data.forEach((val)=>{
-  //                                   console.log(val);
+  //                                   //console.log(val);
   //                                   if(val.circleId === topicIdFound) {
   //                                   this.topics.push(val.body)
   //                                   }
   //                                 }) 
-  //                                 console.log('list of topics', this.topics)
+  //                                 //console.log('list of topics', this.topics)
   //                                 }
   //                               )//end getTopics function
 
@@ -332,26 +332,26 @@ export class TopicsComponent implements OnInit {
   //                       }
   //                     )//end getCircles
 
-  //   console.log('ALL CIRCLES', this.allCircles)
+  //   //console.log('ALL CIRCLES', this.allCircles)
 
 
   // }//end getTopics  
 
   createTopic(name) {
-    console.log(name);
+    //console.log(name);
     let body = {
       body: name,
       circleId: localStorage.getItem('currentCircleId'),
       userId: localStorage.getItem('userID') || sessionStorage.getItem('userId')
     }
-    console.log(body);
+    //console.log(body);
 
     let headers = new Headers({'Content-Type': 'application/json'});
         this.newTopic.body = '';
-        return this.http.post('/api/topics', body, {headers: headers})
+        return this.http.post('http://52.34.112.223:3000/api/topics', body, {headers: headers})
         .map(res => res.json()).subscribe((data) => {
           this.topics.push([body.body, data.topicId]);
-          console.log(data)
+          //console.log(data)
         })
 
 
@@ -365,7 +365,7 @@ export class TopicsComponent implements OnInit {
     //     return this.http.post('/api/messages', body, {headers: headers})
     //         .map((response: Response) => {
     //             let result = response.json();
-    //             console.log('result', result);
+    //             //console.log('result', result);
     //             let message = new Message(result.body, 'Dummy', result.id, null);
     //             this.messages.push(message);
     //             return message;

@@ -40,10 +40,10 @@ export class MessageComponent {
                 ) {}
 
     ngOnInit() {
-        console.log('myVote', this.myVote)
+        //console.log('myVote', this.myVote)
         this.messageService.getComments(this.message)
         .subscribe( (data) => {
-           console.log('this is COMMENTSSSS data inside Comments', data);
+           //console.log('this is COMMENTSSSS data inside Comments', data);
            this.comments = data;
            });
     }
@@ -66,7 +66,7 @@ export class MessageComponent {
             
             comment
             .then((d) => {
-                console.log(d);
+                //console.log(d);
                 return d.result
             })
             .then((r) => { 
@@ -87,7 +87,7 @@ export class MessageComponent {
                 if(text) {
                 this.messageService.addComment(sendThis)
                 .subscribe(
-                   data => console.log("succss here is the data ", data),
+                   data => //console.log("succss here is the data ", data),
                    error => console.error("error here is the error ", error)
                 )   
                 
@@ -107,7 +107,7 @@ export class MessageComponent {
         .subscribe( (data) => {
                         this.userInfo = data[0];
                         this.userInfo.disp = this.userInfo.lastname + ', ' + this.userInfo.firstname;
-                        console.log(this.userInfo, 'this is data and its subscribed');
+                        //console.log(this.userInfo, 'this is data and its subscribed');
                         }) 
         }
     }
@@ -115,18 +115,18 @@ export class MessageComponent {
     onDelete() {
         this.messageService.deleteMessage(this.message)
         .subscribe(
-            result => console.log(result)
+            result => //console.log(result)
         );
     }
 
     upVote(): Observable<any> {
-        console.log('hellllo',this.message);
+        //console.log('hellllo',this.message);
         if (this.myVote == 1) {
             return;
         }
         this.messageService.upVoteMessage(this.message)
         .subscribe(data =>{
-            console.log('upvoteeeeeed', data)
+            //console.log('upvoteeeeeed', data)
             if(data.vote === 'upvote' || data.voted === true){
                 this.myVote++;
                 return
@@ -141,9 +141,9 @@ export class MessageComponent {
         }
         this.messageService.downVoteMessage(this.message)
         .subscribe(data =>{
-            console.log('downvoteeeeeed', data)
+            //console.log('downvoteeeeeed', data)
             if(data.vote === 'downvote' || data.voted === true){
-                console.log('hereeeeeeeee')
+                //console.log('hereeeeeeeee')
                 this.myVote--;
                 return
             } else if(data.alreadyDownVoted === true)

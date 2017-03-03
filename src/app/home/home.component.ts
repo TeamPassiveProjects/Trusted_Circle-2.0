@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
               private DavidDataService: DavidDataService,
               private signUpService: SignupService,
               private renderer: Renderer
-              ) {this.renderer.listenGlobal('window', 'scroll', (event) => { console.log('scroll'); });
+              ) {this.renderer.listenGlobal('window', 'scroll', (event) => { //console.log('scroll'); });
 }
 
   ngOnInit() {
@@ -47,12 +47,12 @@ export class HomeComponent implements OnInit {
     this.flag = !this.flag;
     }
     , err => {
-      console.log('err', err);
+      //console.log('err', err);
     });
   }
 
   submitLogin = (value) => {
-    console.log(value);
+    //console.log(value);
     
     this.loginService.login(this.user.username, this.user.password)
       .subscribe(res => {
@@ -62,9 +62,9 @@ export class HomeComponent implements OnInit {
 
         this.loginService.getUserId()
                                 .subscribe( (data) => {
-                                  // console.log("WHAT AM I???", data)
+                                  // //console.log("WHAT AM I???", data)
                                   data.forEach((val)=>{
-                                    console.log('this is val:', val)
+                                    //console.log('this is val:', val)
                                     if(val["username"] === localStorage.getItem('username') ) {
                                       localStorage.setItem('userID', val.id)
                                       localStorage.setItem('photo', val.photo)
@@ -73,14 +73,14 @@ export class HomeComponent implements OnInit {
                                       this.DavidDataService.getAllCurrentUserData( localStorage.getItem('userID') );
 
                                       sessionStorage.setItem('userId', res.json().id)
-        // console.log('user id ', sessionStorage.getItem('userId'))
+        // //console.log('user id ', sessionStorage.getItem('userId'))
         this.authService.isLoggedIn = true;
         this.router.navigate(['/circles']);
 
                                     }
 
                                   }) 
-                                  // console.log('list of topics', this.topics)
+                                  // //console.log('list of topics', this.topics)
                                   }
                                 )//end getTopics function
 
@@ -90,11 +90,11 @@ export class HomeComponent implements OnInit {
         this.user.username = '';
         this.user.password = '';
 
-        // console.log('res from login is: ', res);
-        // console.log('session username is:', localStorage.getItem('username'))
-        // console.log('res.status from login is: ', res.status);
+        // //console.log('res from login is: ', res);
+        // //console.log('session username is:', localStorage.getItem('username'))
+        // //console.log('res.status from login is: ', res.status);
       }, err => {
-        // console.log('err', err)
+        // //console.log('err', err)
         err = 'Bad Login'
       });
   }
@@ -102,7 +102,7 @@ export class HomeComponent implements OnInit {
   register() {
 
 
-    console.log('fuk')
+    //console.log('fuk')
     this.flag = !this.flag;
   }
 

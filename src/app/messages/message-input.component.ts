@@ -102,12 +102,12 @@ export class MessageInputComponent implements OnInit {
             this.message.body = form.value.content;
             this.messageService.updateMessage(this.message)
             .subscribe(
-                result => console.log("here is the result", result)
+                result => //console.log("here is the result", result)
             );
             this.message = null;
         } else {
             // Create
-            console.log( 'username' , username);
+            //console.log( 'username' , username);
             const message = new Message(
                 form.value.content, 
                 username,
@@ -117,7 +117,7 @@ export class MessageInputComponent implements OnInit {
                 );
             this.messageService.addMessage(message)
                 .subscribe(
-                    data => console.log("succss here is the data ", data),
+                    data => //console.log("succss here is the data ", data),
                     error => console.error("error here is the error ", error)
             );
         }
@@ -131,12 +131,12 @@ export class MessageInputComponent implements OnInit {
             this.message.body = form.value.content;
             this.messageService.updateMessage(this.message)
             .subscribe(
-                result => console.log("here is the result", result)
+                result => //console.log("here is the result", result)
             );
             this.message = null;
         } else {
             // Create
-            console.log( "AM I IN HERE?");
+            //console.log( "AM I IN HERE?");
             const message = new Message(
                 form.value.content, 
                 'Anonymous',
@@ -146,7 +146,7 @@ export class MessageInputComponent implements OnInit {
                 );
             this.messageService.addMessage(message)
                 .subscribe(
-                    data => console.log("succss here is the data ", data),
+                    data => //console.log("succss here is the data ", data),
                     error => console.error("error here is the error ", error)
             );
         }
@@ -164,9 +164,9 @@ export class MessageInputComponent implements OnInit {
         //get the topic owner here...
         this.messageService.getTopicowner( sessionStorage.getItem('topicSelectedIdx') ).subscribe(
             (data) => {
-                console.log('data from getTopicowner', data);
+                //console.log('data from getTopicowner', data);
                 this.topicUser = data.username;
-                console.log(this.topicOwner, 'Topic Owner!!!')
+                //console.log(this.topicOwner, 'Topic Owner!!!')
                 this.topicOwnerFound = true;
             }
         )

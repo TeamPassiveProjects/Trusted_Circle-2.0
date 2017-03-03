@@ -7,11 +7,11 @@ export class PollService {
 
   constructor (private _http: Http) {}
 
-  private url = "http://localhost:4200";
+  private url = "http://52.34.112.223:3000";
 
   yes(suggestedUser, circle, suggestor): Observable<any> {
-    console.log('INSIDE postpoll in service')
-    var data = this._http.post('http://localhost:4200/api/poll', {
+    //console.log('INSIDE postpoll in service')
+    var data = this._http.post('http://52.34.112.223:3000/api/poll', {
       suggestedUser:suggestedUser,
       circle: circle,
       suggestor: suggestor

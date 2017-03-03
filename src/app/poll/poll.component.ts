@@ -20,22 +20,22 @@ export class PollComponent implements OnInit {
 
 
   yes(){
-    console.log(this.suggestedMember, this.circle, this.suggestor)
+    //console.log(this.suggestedMember, this.circle, this.suggestor)
     this._PollService.yes(this.suggestedMember, this.circle, this.suggestor)
     .subscribe(data => {
-      console.log('what is the data over here eh?', data)
+      //console.log('what is the data over here eh?', data)
       this.showThis = false
       if(data.pollCreated === true){
-        console.log('poll created')
+        //console.log('poll created')
         this.pollCreated = true
       } else if(data.pollInProgress === true){
-        console.log('poll in progress')
+        //console.log('poll in progress')
         this.pollInProgress = true;
       } else if(data.blacklist === true){
-        console.log('member blacklisted')
+        //console.log('member blacklisted')
         this.blacklist = true
       } else if(data.member === true){
-        console.log('already member')
+        //console.log('already member')
         this.alreadyMember = true
       }
     })
