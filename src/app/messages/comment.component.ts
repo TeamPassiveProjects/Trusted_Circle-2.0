@@ -41,7 +41,7 @@ export class CommentComponent implements OnInit {
         .subscribe( (data) => {
                         this.userInfo = data[0];
                         this.userInfo.disp = this.userInfo.lastname + ', ' + this.userInfo.firstname;
-                        console.log(this.userInfo, 'this is data and its subscribed');
+                        //console.log(this.userInfo, 'this is data and its subscribed');
                         }) 
         }
     }

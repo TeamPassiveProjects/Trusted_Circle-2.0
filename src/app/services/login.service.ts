@@ -16,21 +16,21 @@ export class LoginService implements OnInit {
   }
 
   login(username, password) {
-    return this._http.post('/api/login', {
+    return this._http.post('http://52.34.112.223:3000/api/login', {
       username: username,
       password: password
     });
   }
 
    getUserId () : Observable <any> {
-    return this._http.get('/api/users')
+    return this._http.get('http://52.34.112.223:3000/api/users')
                     .map( ( res:Response ) => res.json() )
                     .catch((error:any) => Observable.throw(error.json().error || 'Server error'))
   }
 
   // storeDummyData () {
-  //   console.log(this.dummyData, 'before');
+  //   //console.log(this.dummyData, 'before');
   //   this.dummyData = 123;
-  //   console.log(this.dummyData, 'after');
+  //   //console.log(this.dummyData, 'after');
   // }
 }

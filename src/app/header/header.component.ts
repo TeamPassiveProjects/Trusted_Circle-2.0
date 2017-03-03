@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.sanitizer.bypassSecurityTrustHtml;
-    // console.log(localStorage.getItem('username')) {
+    // //console.log(localStorage.getItem('username')) {
     //   this.status=true;
     // }
     this.userInfo.photo = localStorage.getItem('photo');
@@ -81,45 +81,45 @@ export class HeaderComponent implements OnInit {
   getAllUsers() {
     this.DavidDataService.getUsers()
                       .subscribe( (data) => {
-                        //console.log("Where is this data man", data)
+                        ////console.log("Where is this data man", data)
                         this.DavidDataService.allUsers = data;
-                        console.log(this.DavidDataService.allUsers, 'who are the users?');
+                        //console.log(this.DavidDataService.allUsers, 'who are the users?');
                       })
   }
 
   getAllTopics() {
     this.DavidDataService.getTopics()
                       .subscribe( (data) => {
-                        //console.log("Where is this data man", data)
+                        ////console.log("Where is this data man", data)
                         this.DavidDataService.allTopics = data;
-                        console.log(this.DavidDataService.allTopics, 'what are the topics');
+                        //console.log(this.DavidDataService.allTopics, 'what are the topics');
                       })
   }
 
   getAllUsersTopics() {
     this.DavidDataService.getUsersTopics()
                       .subscribe( (data) => {
-                        //console.log("Where is this data man", data)
+                        ////console.log("Where is this data man", data)
                         this.DavidDataService.allUserTopics = data;
-                        console.log(this.DavidDataService.allUserTopics, 'what are the User-Topics');
+                        //console.log(this.DavidDataService.allUserTopics, 'what are the User-Topics');
                       })
   }
   
   getAllUsersCircles() {
     this.DavidDataService.getUsersCircles()
                       .subscribe( (data) => {
-                        //console.log("Where is this data man", data)
+                        ////console.log("Where is this data man", data)
                         this.DavidDataService.allUserCircles = data;
-                        console.log(this.DavidDataService.allUserCircles, 'what are the User-Topics');
+                        //console.log(this.DavidDataService.allUserCircles, 'what are the User-Topics');
                       })
   }
 
   getAllCircles() {
     this.DavidDataService.getCircles()
                       .subscribe( (data) => {
-                        //console.log("Where is this data man", data)
+                        ////console.log("Where is this data man", data)
                         this.DavidDataService.allCircles = data;
-                        console.log(this.DavidDataService.allCircles, 'what are the circles?');
+                        //console.log(this.DavidDataService.allCircles, 'what are the circles?');
                       })
   }
 
@@ -148,7 +148,7 @@ export class DialogOverviewExampleDialog {
   }
 
   save() {
-    console.log('started')
+    //console.log('started')
     let body = {
       id: localStorage.getItem('userID'),
       photo: '',
@@ -172,9 +172,9 @@ export class DialogOverviewExampleDialog {
     }
 
     let headers = new Headers({'Content-Type': 'application/json'});
-         this.http.patch('/api/edit', body, {headers: headers})
+         this.http.patch('http://52.34.112.223:3000/api/edit', body, {headers: headers})
         .map(res => res.json()).subscribe((data) => {
-          console.log(data)
+          //console.log(data)
         })
 
     this.flag = !this.flag;

@@ -43,26 +43,26 @@ export class ChatComponent implements OnInit, OnDestroy {
 
     this.connection = this._chatService.getMessages().subscribe(
       message => {
-        console.log('ROOM NAME', this.roomName);
-        console.log(message, 'this is from the chat component');
-        console.log(sessionStorage.getItem('roomName'))
+        //console.log('ROOM NAME', this.roomName);
+        //console.log(message, 'this is from the chat component');
+        //console.log(sessionStorage.getItem('roomName'))
 
-        console.log('####about to push####:', message )
+        //console.log('####about to push####:', message )
 
         this.messages.push(message)
         
       }
     )
 
-    console.log('ngOnIT HAPPEN')
+    //console.log('ngOnIT HAPPEN')
     this.getRoomlist()
-    console.log('AHHHHHH')
+    //console.log('AHHHHHH')
 
-    console.log(this.listOfRooms, 'After called in ngonit')
+    //console.log(this.listOfRooms, 'After called in ngonit')
 
     if(this.username) {
       this.usernameStatus = true;
-      console.log(this.username, 'this.username', this.usernameStatus);
+      //console.log(this.username, 'this.username', this.usernameStatus);
     }
    }
 
@@ -84,7 +84,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   //  clickedOnRoomName(value) {
   //    this.roomSelected = true;
   //    this.joinRoom (value);
-  //    console.log(value);
+  //    //console.log(value);
   //  }
 
   changeRoom() {
@@ -93,15 +93,15 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   getRoomlist() {
-    console.log('inside chat ChatComponent')
+    //console.log('inside chat ChatComponent')
     this._chatService.getRoomlist()
                       .subscribe( (data) => {
                         if(data.length > 0) {
-                        console.log("WHAT AM I???", data)
+                        //console.log("WHAT AM I???", data)
                         data.forEach((val)=>{
                           this.listOfRooms.push(val)
                         }) 
-                        console.log('list of rooms', this.listOfRooms)
+                        //console.log('list of rooms', this.listOfRooms)
 
                       } else {
 
@@ -118,7 +118,7 @@ export class ChatComponent implements OnInit, OnDestroy {
                             'Travel'
                           ]
                         sample.forEach((val)=>{
-                          console.log(val)
+                          //console.log(val)
                           this.listOfRooms.push(val)
                         }) 
 
@@ -130,8 +130,8 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   joinRoom (someValue) {
-    console.log('this is the join room function', someValue);
-    console.log('joined room function chat ChatComponent is:', someValue)
+    //console.log('this is the join room function', someValue);
+    //console.log('joined room function chat ChatComponent is:', someValue)
      this.roomName = someValue;
      this.roomSelected = true;
      this.roomnameStatus = true;
@@ -139,9 +139,9 @@ export class ChatComponent implements OnInit, OnDestroy {
    }
 
    sendMessage () {
-     console.log('roomNAME IS!!!!', this.roomName);
+     //console.log('roomNAME IS!!!!', this.roomName);
      if(this.message) {
-      //  console.log(this.message)
+      //  //console.log(this.message)
      this._chatService.sendMessage(this.message, this.username, this.roomName);
      this.message = '';
      }
@@ -152,7 +152,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     
 
      this._chatService.setUsername(this.username);
-     console.log('setUsername SET!!!')
+     //console.log('setUsername SET!!!')
      if(this.username) {
      this.usernameStatus = true;
      }
@@ -160,7 +160,7 @@ export class ChatComponent implements OnInit, OnDestroy {
    }
 
    usernameClick(username, i) {
-     console.log('username is', username, 'this is their i value:', i);
+     //console.log('username is', username, 'this is their i value:', i);
    }
 
 

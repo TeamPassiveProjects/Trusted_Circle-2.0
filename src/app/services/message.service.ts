@@ -25,7 +25,7 @@ export class MessageService {
 
     findUser(username): Observable<any> {
 
-    return this.http.get('/api/users/'+username)
+    return this.http.get('http://52.34.112.223:3000/api/users/'+username)
              .map( ( res:Response ) => res.json() )
             .catch((error:any) => Observable.throw(error.json().error || 'Server error'))
     }
@@ -34,7 +34,7 @@ export class MessageService {
         let un = message.username;
         let body = JSON.stringify(message);
         let headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post('/api/messages', body, {headers: headers})
+        return this.http.post('http://52.34.112.223:3000/api/messages', body, {headers: headers})
             .map((response: Response) => {
                 let result = response.json();
                 let message = new Message(
@@ -54,13 +54,13 @@ export class MessageService {
 
      getMessages() {
         let idx = sessionStorage.getItem('topicSelectedIdx');
-        return this.http.get('/api/getMessagesAndVotes/'+idx)
+        return this.http.get('http://52.34.112.223:3000/api/getMessagesAndVotes/'+idx)
             .map((response: Response) => {
                 let messages = response.json();
                 let transformedMessages: Message[] = [];
                 
                 for (let message of messages) {
-                    console.log('message from message service', message)
+                    //console.log('message from message service', message)
                         var body = message.body;
                         var user =  message.user.username;
                         // var votes = message.votes;
@@ -86,8 +86,8 @@ export class MessageService {
                                 commentId,
                         ));
                         }
-                        console.log(votes);
-                        // console.log(voteCount)
+                        //console.log(votes);
+                        // //console.log(voteCount)
 
                     transformedMessages.push(new Message(
                         body, 
@@ -100,7 +100,7 @@ export class MessageService {
                         ));
                 }
                 this.messages = transformedMessages;
-                console.log('transformedMessages ', transformedMessages);
+                //console.log('transformedMessages ', transformedMessages);
                 return transformedMessages;
             })
             .catch((error: Response) => Observable.throw(error.json() || 'Server error'));
@@ -111,13 +111,13 @@ export class MessageService {
     }
 
     upVoteMessage(message: Message) {
-        var data = this.http.post('/api/messagesvotes/', message)
+        var data = this.http.post('http://52.34.112.223:3000/api/messagesvotes/', message)
         .map( ( res:Response ) => res.json() )
         .catch((error:any) => Observable.throw(error.json().error || 'Server error'))
         return data;
     }
     downVoteMessage(message: Message) {
-        var data = this.http.delete('/api/messagesvotes/' + message.messageId +'/'+ message.userId)
+        var data = this.http.delete('http://52.34.112.223:3000/api/messagesvotes/' + message.messageId +'/'+ message.userId)
         .map( ( res:Response ) => res.json() )
         .catch((error:any) => Observable.throw(error.json().error || 'Server error'))
         return data;    
@@ -126,7 +126,7 @@ export class MessageService {
     updateMessage(message: Message) {
         let body = JSON.stringify(message);
         let headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.patch('/api/messages/' + message.messageId, body, {headers: headers})
+        return this.http.patch('http://52.34.112.223:3000/api/messages/' + message.messageId, body, {headers: headers})
             .map((response: Response) => response.json())
             .catch((error: Response) => Observable.throw(error.json() || 'Server error'));
     }
@@ -134,7 +134,7 @@ export class MessageService {
 
     deleteMessage(message: Message) {
         this.messages.splice(this.messages.indexOf(message), 1);
-        return this.http.delete('/api/messages/' + message.messageId)
+        return this.http.delete('http://52.34.112.223:3000/api/messages/' + message.messageId)
             .map((response: Response) => response.json())
             .catch((error: Response) => Observable.throw(error.json() || 'Server error'));
             
@@ -142,7 +142,7 @@ export class MessageService {
     addComment (sendThis) {
         let username = sendThis.username;
         let headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post('/api/comment', sendThis, {headers: headers})
+        return this.http.post('http://52.34.112.223:3000/api/comment', sendThis, {headers: headers})
         .map((response: Response) => {
                 let result = response.json();
                 let comment = new Comment(
@@ -161,7 +161,7 @@ export class MessageService {
 
     getComments(message: Message) {
    
-        return this.http.get('/api/comments/'+ message.messageId)
+        return this.http.get('http://52.34.112.223:3000/api/comments/'+ message.messageId)
             .map((response: Response) => {
                 let comments = response.json();
                 let transformedComments: Comment[] = [];
@@ -193,7 +193,7 @@ export class MessageService {
 
     //find topicOwner
     getTopicowner(topicSelected) {
-        return this.http.get('/api/topicOwner/'+ topicSelected )
+        return this.http.get('http://52.34.112.223:3000/api/topicOwner/'+ topicSelected )
             .map((response: Response) => {
                 return response.json();
             })

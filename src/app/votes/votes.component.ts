@@ -20,20 +20,20 @@ export class VotesComponent implements OnInit {
   constructor(private _VoteService: VoteService) { }
 
   accept(){
-    console.log('accepted')
+    //console.log('accepted')
     this._VoteService.acceptUser(this.voteId, this.pollId)
     .subscribe(data => {
-      console.log(data, 'vote was accepted')
+      //console.log(data, 'vote was accepted')
     })
     this.voteComplete = true
     this.isDataAvailable = false
   }
 
   deny(){
-    console.log('denied')
+    //console.log('denied')
     this._VoteService.denyUser(this.voteId, this.pollId)
     .subscribe(data => {
-      console.log(data, 'vote was accepted')
+      //console.log(data, 'vote was accepted')
     })
     this.voteComplete = true
     this.isDataAvailable = false

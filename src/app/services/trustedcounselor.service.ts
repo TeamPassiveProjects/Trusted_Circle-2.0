@@ -7,10 +7,10 @@ export class TrustedcounselorService {
 
   constructor (private _http: Http) {}
 
-  private url = "http://localhost:4200";
+  private url = "http://52.34.112.223:3000";
 
   invite(circle): Observable<any> {
-    var data = this._http.post('http://localhost:4200/api/trustedcounselor', {
+    var data = this._http.post('http://52.34.112.223:3000/api/trustedcounselor', {
       circle: circle
     })
       .map( ( res:Response ) => res.json() )

@@ -8,10 +8,10 @@ export class ResultService {
 
   constructor (private _http: Http) {}
 
-  private url = "http://localhost:4200";
+  private url = "http://52.34.112.223:3000";
 
   getResult(): Observable<any> {
-    var data = this._http.get('http://localhost:4200/api/results')
+    var data = this._http.get('http://52.34.112.223:3000/api/results')
       .map( ( res:Response ) => res.json() )
       .catch((error:any) => Observable.throw(error.json().error || 'Server error'))
     this.resultData = data;
@@ -19,7 +19,7 @@ export class ResultService {
   }
   
   reject(circleId, userId): Observable<any>{
-    return this._http.post('http://localhost:4200/api/results', {
+    return this._http.post('http://52.34.112.223:3000/api/results', {
       circleId: circleId,
       userId: userId,
       choice: 'reject'
@@ -27,7 +27,7 @@ export class ResultService {
   }
 
   accept(circleId, userId): Observable<any>{
-    return this._http.post('http://localhost:4200/api/results', {
+    return this._http.post('http://52.34.112.223:3000/api/results', {
       circleId: circleId,
       userId: userId,
       choice: 'accept'
