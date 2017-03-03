@@ -120,36 +120,35 @@ export class MessageComponent {
     }
 
     upVote(): Observable<any> {
-        console.log(this.message);
+        console.log('hellllo',this.message);
         if (this.myVote == 1) {
             return;
         }
-        this.messageService.upVoteMessage(this.message).map( (res:Response) => {
-            return res.json();
-        }).subscribe( (data) => {
-            let body = this.message;
-            let headers = new Headers({'Content-Type': 'application/json'});
-            if(data.length === 0) { //then create the post
+        this.messageService.upVoteMessage(this.message)
+        .subscribe(data =>{
+            console.log('upvoteeeeeed', data)
+            if(data.vote === 'upvote' || data.voted === true){
                 this.myVote++;
-                this.http.post('/api/messagesvotes/', body,  {headers: headers}).map((data) => {
-                }).subscribe( (result) => {
-                })    
-            } else {
-            return alert('You Already Voted!!!')
-            }
+                return
+            } else if(data.alreadyUpVoted === true)
+            return alert("You can't upvote the same message twice!")
         })
-        // .subscribe(
-        //     result => console.log(result));
     }
 
     downVote() {
         if (this.myVote == -1) {
             return;
         }
-        this.myVote--;
         this.messageService.downVoteMessage(this.message)
-        .subscribe(
-            result => console.log(result));
+        .subscribe(data =>{
+            console.log('downvoteeeeeed', data)
+            if(data.vote === 'downvote' || data.voted === true){
+                console.log('hereeeeeeeee')
+                this.myVote--;
+                return
+            } else if(data.alreadyDownVoted === true)
+            return alert("You can't downvote the same message twice!")
+        })
     }
 
     emitEvent() {

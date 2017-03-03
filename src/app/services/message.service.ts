@@ -111,15 +111,16 @@ export class MessageService {
     }
 
     upVoteMessage(message: Message) {
-        let body = JSON.stringify(message);
-        let headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.get('/api/messagesvotes/' + message.messageId + '/' + localStorage.getItem('userID') )
-
+        var data = this.http.post('/api/messagesvotes/', message)
+        .map( ( res:Response ) => res.json() )
+        .catch((error:any) => Observable.throw(error.json().error || 'Server error'))
+        return data;
     }
     downVoteMessage(message: Message) {
-        let body = JSON.stringify(message);
-        let headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.delete('/api/messagesvotes/' + message.messageId +'/'+ message.userId)    
+        var data = this.http.delete('/api/messagesvotes/' + message.messageId +'/'+ message.userId)
+        .map( ( res:Response ) => res.json() )
+        .catch((error:any) => Observable.throw(error.json().error || 'Server error'))
+        return data;    
     }
 
     updateMessage(message: Message) {

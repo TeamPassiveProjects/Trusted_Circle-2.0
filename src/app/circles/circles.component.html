@@ -61,35 +61,42 @@
                 max-height: 100%;
                 display: block;
                 margin: auto auto;">
+
                   <div class="caption">
 
                     <h1 id="intro" style="max-width: 100%;
                 max-height: 100%;
                 display: block;
                 margin: auto auto;">Your circles, <strong> {{username}}</strong></h1>
-                    <ul>
-                      <li *ngFor="let circle of finalComparedCircles">
+                    <hr>
+                    <div class="col-xs-12">
 
-                        <div>
-                          <!--[routerLink]="['/topics']"-->
-                          <strong (click)="circleClicked(circle[0])">{{ circle[0] }}</strong>
-                        </div>
-                      </li>
-                    </ul>
+                      <ul class="list-group">
+                        <li class="list-group-item" [@list2] *ngFor="let circle of finalComparedCircles">
 
-                    <input type="text" placeholder="New Circle Name" [(ngModel)]="newCircle" name="newCircle" (keyup.enter)="createCircle(newCircle)">
+                          <div>
+                            <!--[routerLink]="['/topics']"-->
+                            <strong (click)="circleClicked(circle[0])">{{ circle[0] }}</strong>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <input type="text" placeholder="New Circle Name" style="display: block;
+                margin: auto auto;" [(ngModel)]="newCircle" name="newCircle" (keyup.enter)="createCircle(newCircle)">
                   </div>
                 </div>
 
-                <div *ngIf="loadTopic === true">
-                  <img src="http://www.iconsfind.com/wp-content/uploads/2013/11/20131104_527706bcf3fca.png" style="max-width: 30%;
+                  <div *ngIf="loadTopic === true">
+                    <img src="http://www.iconsfind.com/wp-content/uploads/2013/11/20131104_527706bcf3fca.png" style="max-width: 30%;
               max-height: 100%;
               display: block;
               margin: auto auto;" />
-                  <app-topics class='topic'></app-topics>
+                              <div class="caption">
+
+                    <app-topics class='topic'></app-topics>
+                  </div>
+
                 </div>
-
-
               </div>
 
 
@@ -104,6 +111,10 @@
                 <div class="caption">
                   <a [routerLink]="['/chat']" routerLinkActive="active">
                     <h3 align="center">Chat</h3>
+                    <h1 id="intro" style="max-width: 100%;
+                max-height: 100%;
+                display: block;
+                margin: auto auto;">Chat</h1>
                   </a>
                   <!--<app-chat> </app-chat>-->
                   <!--<p></p>-->
@@ -120,7 +131,10 @@
             <div class="col-8 col-sm-6">
 
               <div class="thumbnail">
-
+<h1 id="intro" style="max-width: 100%;
+                max-height: 100%;
+                display: block;
+                margin: auto auto;">Activity feed</h1>
                 <div class="ui feed">
                   <div class="event">
                     <div class="label">
@@ -216,23 +230,26 @@
             <div class="col-4 col-sm-6">
               <div class="thumbnail">
                 <div class="caption">
-                  <h3>The List</h3>
+                  <h1 id="intro" style="max-width: 100%;
+                max-height: 100%;
+                display: block;
+                margin: auto auto;">The List</h1>
                   <p>Not ready to share secrects/feedback? add them to your list for later!</p>
                 </div>
                 <hr>
                 <div class="row">
                   <div class="col-xs-12">
-                    <input type="text" #input>
-                    <button class="btn btn-primary" (click)="onAdd(input.value)">Add Secrect</button>
-                    <hr>
+                    
                     <ul class="list-group">
-                      <li class="list-group-item" (click)="onDelete(item)" [@list1] *ngFor="let item of list">
+                      <li class="list-group-item" (click)="onDelete(item)" [@list2] *ngFor="let item of list">
                         {{ item }}
                       </li>
                     </ul>
+                    <input type="text" #input style="display: block;
+                margin: auto auto;" (keyup.enter)="onAdd(input.value)">
+
                   </div>
                 </div>
-                <hr>
               </div>
 
             </div>

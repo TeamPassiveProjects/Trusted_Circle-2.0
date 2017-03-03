@@ -606,7 +606,7 @@ router.get('/messagesvotes/:messageId/:userId', (req, res) => {
     var messageId = req.body.messageId
     var upvotedUserId;
 
-    console.log('messagesvotes', req.body);
+    console.log('HAHAHAHAHAHAHA', req.body);
 
     User_Message_Votes.findOne({
       where:{
@@ -693,8 +693,13 @@ router.get('/messagesvotes/:messageId/:userId', (req, res) => {
             })
           })
         })
+        res.send({
+          voted:true
+        })
       } else if(data.dataValues.vote === 'upvote'){
-        res.send('already upvoted')
+        res.send({
+          alreadyUpVoted: true
+        })
       }
     })
   })
@@ -841,8 +846,13 @@ router.delete('/messagesvotes/:id/:uid', (req, res) => {
             })
           })
         })
+        res.send({
+          voted: true
+        })
       } else if(data.dataValues.vote === 'downvote'){
-        res.send('already downvoted')
+        res.send({
+          alreadyDownVoted: true
+        })
       }
     })
 });
