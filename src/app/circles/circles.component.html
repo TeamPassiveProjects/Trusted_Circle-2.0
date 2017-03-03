@@ -24,12 +24,12 @@
           <div class="profile-usermenu">
             <ul class="nav">
               <li class="active">
-                <a href="#">
-                  <i class="glyphicon glyphicon-home"></i> Overview </a>
+                <a [routerLink]="['/home']">
+                  <i class="glyphicon glyphicon-home"></i> Home </a>
               </li>
               <li>
-                <a href="#">
-                  <i class="glyphicon glyphicon-user"></i> Account Settings </a>
+                <a [routerLink]="['/chat']">
+                  <i class="glyphicon glyphicon-user"></i> Chat </a>
               </li>
               <li>
                 <a href="#" target="_blank">
@@ -132,6 +132,7 @@
                 max-height: 100%;
                 display: block;
                 margin: auto auto;">Activity feed</h1>
+                <hr>
                 <div class="ui feed">
                   <div class="event">
                     <div class="label">
