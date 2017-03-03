@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
               private DavidDataService: DavidDataService,
               private signUpService: SignupService,
               private renderer: Renderer
-              ) {this.renderer.listenGlobal('window', 'scroll', (event) => { //console.log('scroll'); });
+              ) {this.renderer.listenGlobal('window', 'scroll', (event) => {});
 }
 
   ngOnInit() {
