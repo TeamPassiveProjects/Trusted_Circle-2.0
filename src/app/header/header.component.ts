@@ -150,16 +150,31 @@ export class DialogOverviewExampleDialog {
   save() {
     console.log('started')
     let body = {
-      email: this.model.email,
-      desc: this.model.desc,
-      image: this.model.image
+      id: localStorage.getItem('userID')
+    }
+
+    if(this.model.image) {
+      body.photo = this.model.image;
+      this.wew = this.model.image;
+      localStorage.setItem('photo', body.photo)
+    }
+    if(this.model.email) {
+      body.email = this.model.email;
+      localStorage.setItem('email', body.email)
+    }
+    if(this.model.desc) {
+      body.desc = this.model.desc;
+      this.udesc = this.model.desc;
+      localStorage.setItem('desc', body.desc)
     }
 
     let headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post('/api/edit', body, {headers: headers})
+         this.http.patch('/api/edit', body, {headers: headers})
         .map(res => res.json()).subscribe((data) => {
           console.log(data)
         })
+
+    this.flag = !this.flag;
 
   }
 }

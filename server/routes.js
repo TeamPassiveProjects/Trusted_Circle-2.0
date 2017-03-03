@@ -857,38 +857,21 @@ router.delete('/messagesvotes/:id/:uid', (req, res) => {
     })
 });
 
-router.post('/edit', (req, res) => {
+router.patch('/edit', (req, res) => {
   var body = req.body
   console.log('THIS IS BODY!!', body);
   // body = JSON.stringify(body)
   // res.send(body);
-  let newTopic = {
-    
-  }
 
 
-  // Topic.create(newTopic)
-  //   .then((data) => {
-  //     // res.status(200).json(data);
-  //     return data;
-  //   }).then((data) => {
-
-  //     console.log(data.dataValues, ' DATATATATATATATATAATATA');
-
-  //     User_Topics.create({
-  //         status: "original poster",
-  //         userId: body.userId,
-  //         topicId: data.dataValues.id
-  //       })
-  //       .then((data) => {
-  //         res.status(200).json(data);
-  //       })
-
-
-
-  //   })
-
-})
+  User.update(body, {
+      where: {
+        id: body.id
+      }
+    }).then(val => {
+      console.log(val);
+    })
+});
 
 router.post('/topics', (req, res) => {
   var body = req.body
@@ -964,7 +947,7 @@ router.post('/circles', (req, res) => {
 
 router.patch('/messages/:id', (req, res) => {
   console.log("EDIT", req.params.id);
-  console.log("EDIT", req.body.userId);
+  console.log("EDIT", req.body);
   Message.update(req.body, {
     where: {
       id: req.params.id

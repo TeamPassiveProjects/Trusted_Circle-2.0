@@ -90,7 +90,7 @@ export class CirclesComponent implements OnInit {
   circlesUser: any = [];
   finalComparedCircles: any = [];
   circles: any = [];
-  profilePicLink: string = sessionStorage.getItem('userPhoto');
+  public photo = localStorage.getItem('photo');
   loadTopic: any = false;
   loadCircle: any = false;
 

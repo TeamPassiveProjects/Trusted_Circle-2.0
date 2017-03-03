@@ -6,7 +6,19 @@
       </div>
       <div class="content">
         <div class="summary">
-          <a id="user">
+          <a id="user" [popover]="poop" popoverPlacement="right" [popoverOnHover]="true" (mouseenter)="ttp( comment.username )"
+        [popoverCloseOnMouseOutside]="true">
+                                      <popover-content #poop [title]="userInfo.disp" [closeOnMouseOutside]="true">
+                                      <div class="pfp">
+                                        <div class="profile-userpic">
+                                          <img [src]="userInfo.photo" class="img-responsive">
+                                        </div>
+                                        <h2 class='username'> {{userInfo.username}} </h2>
+                                      </div>
+                                      <div class='desc'>
+                                        <h1 id="k"> {{userInfo.desc}} </h1>
+                                      </div>
+                                    </popover-content>
             {{comment.username}} :
         </a> {{ comment.text }}
           <div class="date" id="date">
@@ -18,3 +30,4 @@
     </div>
   </div>
 </div>
+

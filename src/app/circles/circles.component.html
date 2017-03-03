@@ -4,8 +4,10 @@
       <div class="col-md-3">
         <div class="profile-sidebar">
           <div class="profile-userpic">
-            <img src="http://santetotal.com/wp-content/uploads/2014/05/default-user.png" on-mouseover='over()' class="img-responsive">
-            <!--src={{profilePicLink}}-->
+
+            <img [src]="photo" on-mouseover='over()' class="img-responsive" >
+<!--src={{profilePicLink}}-->
+
 
           </div>
 
@@ -13,15 +15,10 @@
             <div class="profile-usertitle-name">
               {{ username }}
             </div>
-            <div class="profile-usertitle-job">
-              Developer
-            </div>
           </div>
 
-          <div class="profile-userbuttons">
-            <button type="button" class="btn btn-primary">Things</button>
-            <button type="button" class="btn btn-default">Stuff</button>
-          </div>
+          <hr>
+
           <!-- END SIDEBAR BUTTONS -->
           <!-- SIDEBAR MENU -->
           <div class="profile-usermenu">
