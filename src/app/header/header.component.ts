@@ -150,7 +150,10 @@ export class DialogOverviewExampleDialog {
   save() {
     console.log('started')
     let body = {
-      id: localStorage.getItem('userID')
+      id: localStorage.getItem('userID'),
+      photo: '',
+      email: '',
+      desc: ''
     }
 
     if(this.model.image) {
