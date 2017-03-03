@@ -131,15 +131,18 @@ Please Log In to Chat
 
       <div class="panel panel-default" *ngIf="usernameStatus === true && username !== undefined && roomnameStatus">
             <div >
-                <input type="text" placeholder="Enter a Message..." 
+                <input type="text" 
+                class="form-control"
+                aria-describedby="basic-addon2"
+                placeholder="Enter a Message..." 
                 [(ngModel)]="message" 
                 name="message"
                 (keyup.enter)="sendMessage()"
-                style="min-width: 100%;" maxlength="100">
+                style="min-width: 100%;
+                
+                " maxlength="100">
             </div>
       </div>
 
 
 </div>
-
-
