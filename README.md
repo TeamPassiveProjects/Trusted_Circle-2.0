@@ -1,7 +1,7 @@
 # Trusted_Circle-2.0
 
-Product Owner: Felipe Lee <br />
-Dev Member/Front-End: Richard Durazo <br />
-Dev Member/Auth: Gabriel Mitrakos <br />
-Dev Member/Scrum/Backend: David Park <br />
+Full Stack Engineer: Felipe Lee <br />
+Full Stack Engineer: Richard Durazo <br />
+Full Stack Engineer: Gabriel Mitrakos <br />
+Full Stack Engineer: David Park <br />
 
